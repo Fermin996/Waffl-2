@@ -1,0 +1,29 @@
+.chItmDiv{
+    display: flex;
+    flex-direction: row;
+}
+
+.chItmDivClicked{
+    display: flex;
+    flex-direction: row;
+    background-color: aqua;
+}
+
+.sentChItm{
+    display: flex;
+    flex-direction: row;
+    background-color: lightgray;
+}
+
+.itmColumn{
+    width: 30%;
+}
+
+.itmColumn2{
+    width: 20%;
+}
+
+.itmColumn3{
+ width: 15%;
+}
+

@@ -1,0 +1,13 @@
+.currentButton{
+    border: 1px solid black;
+    border-radius: 5px;
+    padding: 20px 30px;
+}
+
+.currentButtonSelected{
+    border: 1px solid black;
+    border-radius: 5px;
+    padding: 20px 30px;
+    background-color: lightpink;
+    color:black;
+}

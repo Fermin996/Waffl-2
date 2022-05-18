@@ -1,0 +1,28 @@
+.checkEdit{
+    width: 50vw;
+    height: 100vh;
+    display:flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.editBar{
+    color: white;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    background-color: rgb(153, 0, 240);
+    padding: 15px;
+    font-size: 20px;
+}
+
+.buttonsContainer{
+    margin-top: 20px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+
+

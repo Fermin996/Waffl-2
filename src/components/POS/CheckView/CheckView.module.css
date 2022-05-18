@@ -1,0 +1,73 @@
+.checkView{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100vh;
+    width: 50vw;
+    border-right: 3px solid black;
+}
+
+
+.checkViewButtons{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    background-color: lightgrey;
+    padding: 25px;
+}
+
+.checkViewButtons div{
+    border: 1px solid black;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.checkViewButtons div:hover{
+    background-color: lightpink;
+}
+
+.checkItemsHeader{
+    display: flex;
+    flex-direction: row;
+}
+
+.checkItemsLabel1{
+    width: 30%;
+}
+
+.checkItemsLabel2{
+    width: 20%
+}
+
+.checkItemsLabel3{
+    width: 15%;
+}
+
+.checkTabsDiv{
+    /* border: 1px solid black; */
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.addCheckButt{
+    border: 1px solid black;
+    width: 20%;
+    border-radius: 5px;
+    margin: 5px;
+}
+
+.checkTab{
+    border: 1px solid black;
+    border-radius: 5px;
+    width: 10%;
+    margin:5px;
+}
+
+.checkTabClicked{
+    background-color: lightpink;
+    border: 1px solid black;
+    border-radius: 5px;
+    width: 10%;
+    margin:5px; 
+}
