@@ -1,0 +1,65 @@
+.pinBack{
+    /* background-color: rgb(251, 190, 50); */
+    background-color: #beade0;
+    height:90vh;
+    width:100vw;
+    /* margin-top:-20px; */
+    padding-top:10vh;
+    overflow-y: hidden;
+}
+
+.pinNumDisplayDiv{
+    margin-bottom:20px;
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.pinBox{
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+    align-items: center;
+}
+
+.pinRow{
+    display: flex;
+    flex-direction: row;
+}
+
+.pinRow section{  
+    border: 3px solid rgb(240, 243, 244, 0.5);
+    border-radius: 50%;
+    height: 90px;
+    width: 90px;
+    margin: 5px;
+}
+
+.clockInDiv{
+
+    /* background-color: rgb(251, 190, 50); */
+    background-color: #beade0;
+    border: 3px solid rgb(240, 243, 244, 0.5);
+    border-radius: 50%;
+    /* height:60px; */
+    /* width:100px; */
+    display: flex;
+    flex-direction: column;
+    padding-top: 10px;
+}
+
+.numberP{
+    font-size: 25px;
+}
+
+.goP{
+    padding-top:20px;
+}
+
+.pinRow section:hover{
+    background-color:whitesmoke;
+}
+
+.clockInDiv p{
+    margin:0 auto;
+}
+

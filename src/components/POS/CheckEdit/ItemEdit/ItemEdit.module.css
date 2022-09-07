@@ -1,7 +1,8 @@
 .itemEditDiv{
     align-content: flex-end;
-    border: 2px solid black;
+    border-top: 2px solid black;
     border-radius: 1px;
+    /* background-color:red ; */
 }
 
 .quantButton{
@@ -17,24 +18,34 @@
     padding: 5px;
 }
 
+.quantStyle{
+    margin-top: 10px;
+}
 
 .pmDiv{
-    border: 1px solid black;
+    /* border: 1px solid black; */
+    cursor: pointer;
     background-color: rgb(222,222,220);
-    border-radius: 5px;
+    border-radius: 10px;
     height:40px;
     width:30px;
     padding: 5px;
 }
 
-.quantButton p{
-    margin: 0 auto;
+.pmDiv:hover{
+    background-color: rgb(183, 183, 179);
+    border: 1px solid rgba(0, 0, 0, 0.514)
 }
+
+/* .quantButton p{
+    margin: 0 auto;
+} */
 
 .itemDetails{
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    align-items: center;
     margin: 10px;
 }
 
@@ -44,12 +55,19 @@
 }
 
 .cancelButton{
+    cursor: pointer;
     margin: 5px;
+    padding:5px;
     background-color: rgb(212, 212, 210);
     height: 40px;
     border: 1px solid rgb(140,140,140,);
-    border-bottom: 3px solid rgb(140, 140, 140);
+    /* border-bottom: 3px solid rgb(140, 140, 140); */
     border-radius: 5px;
+}
+
+.cancelButton:hover{
+    background-color: rgb(183, 183, 179);
+
 }
 
 .cancelButtP{
@@ -60,11 +78,17 @@
 
 .doneButton{
     margin: 5px;
-    background-color: rgb(248, 90, 231);
+    background-color:#b19ae0;
     height: 40px;
-    border: 1px solid ;
-    border-bottom: 3px solid rgb(140, 140, 140);
+    cursor: pointer;
+    /* border: 1px solid ; */
+    /* border-bottom: 3px solid rgb(140, 140, 140); */
     border-radius: 5px;
+    padding:5px;
+}
+
+.doneButton:hover{
+    background-color: #beade0;
 }
 
 .doneButtP{
@@ -79,12 +103,19 @@
 }
 
 .modDiv{
+    cursor: pointer;
     margin: 5px;
+    padding:5px;
     background-color: rgb(212, 212, 210);
     height: 40px;
     border: 1px solid rgb(140,140,140,);
-    border-bottom: 3px solid rgb(140, 140, 140);
+    /* border-bottom: 3px solid rgb(140, 140, 140); */
     border-radius: 5px;
+}
+
+.modDiv:hover{
+    background-color: rgb(183, 183, 179);
+
 }
 
 .modDivP{
@@ -134,4 +165,12 @@
     flex-direction: row;
     margin: 10px;
     margin:0, auto;
+}
+
+@media(max-width:750px){
+    .itemDetails{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
 }

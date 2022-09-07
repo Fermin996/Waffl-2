@@ -1,0 +1,118 @@
+.paymentScreen{
+    display: flex;
+    flex-direction: column;
+}
+
+.itemScreen{
+    height: 91vh;
+    background-color: whitesmoke;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.payOptions{
+    display: flex;
+}
+
+.balanceEdit{
+    display: flex;
+    flex-direction: column;
+    width: 50vw;
+    margin-left: 30%;
+}
+
+.numBtnsDiv{
+    display: flex;
+    border: 1px solid black;
+}
+
+.numBtnsDiv p{
+    cursor: pointer;
+    border: 1px solid black;
+    margin: 10px;
+    padding: 4vh;
+}
+
+.numBtnsDiv p:hover{
+    background-color: aqua;
+}
+
+.checkItemsHeader{
+    display: flex;
+    flex-direction: row;
+    color: rgb(113, 192, 219);
+    margin-bottom: 10px;
+}
+.checkItemsLabel1{
+    width: 30%;
+}
+
+.checkItemsLabel2{
+    width: 20%
+}
+
+.checkItemsLabel3{
+    width: 15%;
+}
+
+.paymentDetails{
+    display: flex;
+    justify-content: space-between;
+    border: 1px solid black;
+    /* background-color: #F8F9FC; */
+}
+
+.detailsColumn{
+    display: flex;
+    flex-direction: column;
+    width: 50vw;
+}
+
+.detailsPcontainer{
+    display: flex;
+    /* border: 1px solid black; */
+    justify-content: space-between;
+    padding-right:20px;
+    padding-left: 20px;
+}
+
+.cashCredDiv{
+    margin-left: 30%;
+}
+
+.detailsLabels{
+    display: flex;
+    flex-direction: row;
+    font-size: 15px;
+    justify-content: space-between;
+    margin-left: 12%;
+    margin-right: -20%;
+    margin-top: -10px;
+}
+
+.tendered{
+    display:flex;   
+    font-size: 15px;
+    justify-content: space-between;
+    margin-left: 13%;
+    margin-right: -25%;
+    margin-top: -10px;
+    margin-bottom: 5px;
+}
+
+.tendered input{
+    width: 60%;
+}
+
+.cashCredDiv{
+    display: flex;
+    padding-right: 100px;
+}
+
+.cashCredDiv p{
+    border: 1px solid black;
+    padding: 5px;
+    margin-left:5px;
+    margin-right:5px;
+}

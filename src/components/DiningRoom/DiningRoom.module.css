@@ -1,0 +1,236 @@
+.uViewBar{
+    height: 7vh;
+    background-color: rgb(75, 74, 74);
+    display: flex;
+    justify-content: flex-end;
+}
+
+.uViewBar div{
+    margin: 15px;
+    font-weight: 600;
+    color:white;
+}
+
+.uViewClose{
+    cursor: pointer;
+}
+
+.uViewClose:hover{
+    color:rgb(0, 200, 255);
+}
+
+.dRoomBack{
+    background-color: rgb(171, 178,185 );
+    height: 93vh;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.halfRoom{
+    display: flex;
+    flex-direction: column;   
+    margin: 0 auto;
+    margin: 40px;
+    justify-content: space-between;
+    width: 50%;
+}
+
+.leftHalfRoom{
+    display: flex;
+    flex-direction: column;   
+    margin: 0 auto;
+    margin: 40px;
+    justify-content: space-between;
+    height: 70%;
+    width: 50%;
+}
+
+.dSection1{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    border: 5px solid black;
+    border-bottom: 0;
+}
+
+.dSection2{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    border-right: 5px solid black;
+    border-bottom: 5px solid black;
+}
+
+.dSection3{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+
+/* .dSection1 section{
+    cursor: pointer;
+    background-color: whitesmoke;
+    font-size: 30px;
+    padding:15px;
+    margin: 15px;
+    width: 40px;
+    border: 3px solid rgb(52, 73, 94);
+} */
+
+.sec1Table{
+    color: black;
+    cursor: pointer;
+    text-decoration: none;
+    background-color: whitesmoke;
+    font-size: 30px;
+    padding:15px;
+    margin: 15px;
+    width: 40px;
+    border: 3px solid rgb(52, 73, 94);
+}
+
+/* .sec2Table{
+    cursor: pointer;
+    color:black;
+    text-decoration: none;
+    background-color: whitesmoke;
+    font-size: 30px;
+    padding:15px;
+    margin: 15px;
+    width: 40px;
+    border: 3px solid rgb(52, 73, 94);
+}
+
+.sec3Table{
+    cursor: pointer;
+    color:black;
+    text-decoration: none;
+    background-color: whitesmoke;
+    font-size: 30px;
+    padding:15px;
+    margin: 15px;
+    width: 40px;
+    border: 3px solid rgb(52, 73, 94);
+} */
+
+.sec1Table:hover{
+    background-color: lightblue;
+}
+
+/* .sec2Table:hover{
+    background-color: lightblue;
+}
+
+.sec3Table:hover{
+    background-color: lightblue;
+} */
+
+/* .dSection2 section{
+    cursor: pointer;
+    background-color: whitesmoke;
+    font-size: 30px;
+    padding:15px;
+    margin: 15px;
+    width: 40px;
+    border: 3px solid rgb(52, 73, 94);
+} */
+
+/* .dSection3 section{
+    cursor: pointer;
+    background-color: whitesmoke;
+    font-size: 30px;
+    padding:15px;
+    margin: 15px;
+    width: 40px;
+    border: 3px solid rgb(52, 73, 94);
+} */
+
+/* .dSection1 section:hover{
+    background-color: lightblue;
+}
+
+.dSection2 section:hover{
+    background-color: lightblue;
+}
+
+.dSection3 section:hover{
+    background-color: lightblue;
+} */
+
+.currUserTable{
+    color: black;
+    cursor: pointer;
+    text-decoration: none;
+    background-color: rgb(0, 200, 255);
+    font-size: 30px;
+    padding:15px;
+    margin: 15px;
+    width: 40px;
+    border: 3px solid rgb(52, 73, 94);
+}
+
+.currUserTable:hover{
+    background-color: lightblue;
+}
+
+.notUserTable{
+    color: black;
+    text-decoration: none;
+    background-color: rgb(149, 152, 153);
+    font-size: 30px;
+    padding:15px;
+    margin: 15px;
+    width: 40px;
+    border: 3px solid rgb(52, 73, 94);
+}
+
+
+.barSection{
+    display: flex;
+    flex-direction: column;
+}
+
+.barTops{
+    display: flex;
+    flex-direction: row;
+}
+
+.barSec{
+    text-decoration: none;
+    color:black;
+    background-color: whitesmoke;
+    font-size: 30px;
+    padding:15px;
+    margin: 5px;
+    width: 30px;
+    height: 30px;
+    border: 3px solid rgb(52, 73, 94);
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.barSec:hover{
+    background-color:lightblue;
+}
+
+/* .barTops section{
+    background-color: whitesmoke;
+    font-size: 30px;
+    padding:15px;
+    margin: 5px;
+    width: 30px;
+    height: 30px;
+    border: 3px solid rgb(52, 73, 94);
+    border-radius: 50%;
+    cursor: pointer;
+} */
+
+
+
+.barText{
+    background-color: black;
+    color: white;
+}

@@ -1,6 +1,8 @@
 .posDiv{
     display: flex;
     flex-direction: row;
+    overflow-x: hidden;
+    overflow-y: hidden;
 }
 
 .splitCheckView{
@@ -32,4 +34,13 @@
 
 .splitItmClicked{
     background-color: aqua;
+}
+
+
+@media(max-width:600px){
+
+    .posDiv{
+        display: flex;
+        flex-direction: column;
+    }
 }

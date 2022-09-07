@@ -1,21 +1,24 @@
-import React from 'react'
-import styles from './MenuButtons.module.css'
+import React, { useContext } from "react";
+import { CheckContext } from "../../../../helpers/check-context";
+import styles from "./MenuButtons.module.css";
 
-const MenuButtons = ({currentButtonData, checkItemClicked, onClick}) => {
+const MenuButtons = ({ currentButtonData, onClick }) => {
+  const checkCtx = useContext(CheckContext);
 
-  let currStyle = styles.currentButton
+  let currStyle = styles.currentButton;
 
-  
-  if(checkItemClicked && checkItemClicked.title === currentButtonData.title){
-    currStyle = styles.currentButtonSelected
+  if (
+    checkCtx.checkItemClicked &&
+    checkCtx.checkItemClicked.title === currentButtonData.title
+  ) {
+    currStyle = styles.currentButtonSelected;
   }
-
 
   return (
     <div className={currStyle} onClick={onClick}>
-        {currentButtonData.title}
+      {currentButtonData.title}
     </div>
-  )
-}
+  );
+};
 
 export default MenuButtons;

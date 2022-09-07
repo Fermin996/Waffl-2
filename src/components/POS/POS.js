@@ -1,120 +1,118 @@
-import React, {useState} from 'react'
-import menu from '../menu';
-import CheckEdit from './CheckEdit/CheckEdit';
-import CheckView from './CheckView/CheckView';
-import styles from './POS.module.css'
+import React, { useEffect, useState, useContext } from "react";
+import menu from "../menu";
+import CheckEdit from "./CheckEdit/CheckEdit";
+import CheckView from "./CheckView/CheckView";
+import styles from "./POS.module.css";
+import { TablesContext } from "../../helpers/tables-context";
+import { CheckContext } from "../../helpers/check-context";
 
 const POS = () => {
+  const [currButtons, setCurrButtons] = useState(menu);
+  const [splitCheckOpen, setSplitCheckOpen] = useState(false);
+  const [storedMulti, setStoredMulti] = useState(null);
+  const [checkWasSplit, setCheckWasSplit] = useState(false);
 
-  const [multiCheck, setMultiCheck] = useState(false)
-  const [check, setCheck] = useState([{title:"-", quantity:0, price:0, total:0}])
-  const [currButtons, setCurrButtons] = useState(menu)
-  const [checkItemClicked, setCheckItemClicked] = useState(false)
-  const [checkNum, setCheckNum] = useState(0)
-  const [splitCheckOpen, setSplitCheckOpen] = useState(false)
+  const checkCtx = useContext(CheckContext);
+  const tablesCtx = useContext(TablesContext);
 
   let deleteEmptyCheckBtn = null;
   let splitItmStyle = null;
-  let multiCheckCopy = multiCheck
-  console.log(multiCheck)
-  function addSplitCheckHandler(){
+  let multiCheckCopy = checkCtx.multiCheck;
 
-    if(multiCheck.length < 6){
-      multiCheckCopy.push([{title:"-", quantity:0, price:0, total:0}])
-      setMultiCheck([...multiCheckCopy])
-    }
-
-  }
-
-  function splitBackHandler(){
-    setSplitCheckOpen(false)
-  }
-
-  function deleteEmptyCheckHandler(checkIndex){
-    if(multiCheckCopy.length === 2){
-      console.log(multiCheck)
-      setSplitCheckOpen(false)
-      setCheck([...multiCheckCopy[0]])
-      setMultiCheck(false)
-    }else{
-      multiCheckCopy.splice(checkIndex, 1)
-      setMultiCheck([...multiCheckCopy])
+  function addSplitCheckHandler() {
+    if (checkCtx.multiCheck.length < 6) {
+      multiCheckCopy.push([
+        { title: "-", quantity: 0, price: 0, total: 0, sent: false },
+      ]);
+      checkCtx.setMultiCheck([...multiCheckCopy]);
     }
   }
 
-  function splitCheckItemHandler(item, index){
-    if(!checkItemClicked){
-      setCheckItemClicked(item)
-      setCheckNum(index)
-    }else if(index === checkNum){
-      setCheckItemClicked(false)
-    }else{
-      
-      if(multiCheck[checkNum].length === 1 && multiCheck[checkNum][0] !== "-"){
-        multiCheckCopy[index].push(checkItemClicked)
-        multiCheckCopy[checkNum] = [{title:"-", quantity:0, price:0, total:0}]
-      }else{
+  function splitBackHandler() {
+    setSplitCheckOpen(false);
+  }
 
-        if(multiCheckCopy[index][0].title === "-"){
-          multiCheckCopy[index].pop()
+  function deleteEmptyCheckHandler(checkIndex) {
+    if (multiCheckCopy.length === 2) {
+      setSplitCheckOpen(false);
+      checkCtx.setCheck([...multiCheckCopy[0]]);
+      checkCtx.setMultiCheck(false);
+    } else {
+      multiCheckCopy.splice(checkIndex, 1);
+      checkCtx.setMultiCheck([...multiCheckCopy]);
+    }
+  }
+
+  function splitCheckItemHandler(item, index) {
+    if (!checkCtx.checkItemClicked) {
+      checkCtx.setCheckItemClicked(item);
+      checkCtx.setCheckIndex(index);
+    } else if (index === checkCtx.checkIndex) {
+      checkCtx.setCheckItemClicked(false);
+    } else {
+      //if checkItem has been clicked
+      // and this index is not the curr check index
+      if (
+        checkCtx.multiCheck[checkCtx.checkIndex].length === 1 &&
+        checkCtx.multiCheck[checkCtx.checkIndex][0] !== "-"
+      ) {
+        // if this check has only one item left
+        multiCheckCopy[index].push(checkCtx.checkItemClicked);
+        multiCheckCopy[checkCtx.checkIndex] = [
+          { title: "-", quantity: 0, price: 0, total: 0, sent: false },
+        ];
+      } else {
+        //if this check is empty remove filler item
+        if (multiCheckCopy[index][0].title === "-") {
+          multiCheckCopy[index].pop();
         }
 
-        multiCheckCopy[index].push(checkItemClicked)
-        multiCheckCopy[checkNum].splice(multiCheckCopy[checkNum].indexOf(checkItemClicked), 1)
+        multiCheckCopy[index].push(checkCtx.checkItemClicked);
+        multiCheckCopy[checkCtx.checkIndex].splice(
+          multiCheckCopy[checkCtx.checkIndex].indexOf(
+            checkCtx.checkItemClicked
+          ),
+          1
+        );
       }
 
-      setMultiCheck([...multiCheckCopy])
-      setCheckItemClicked(false)
-
+      checkCtx.setMultiCheck([...multiCheckCopy]);
+      checkCtx.setCheckItemClicked(false);
     }
-
   }
 
-  let PosView =(
+  let PosView = (
     <div className={styles.posDiv}>
-        <div className={styles.checkView}>
-          <CheckView 
-              multiCheck={multiCheck}
-              setMultiCheck={setMultiCheck}
-              check={check}
-              setCheck={setCheck}
-              setCheckItemClicked={setCheckItemClicked} 
-              checkItemClicked={checkItemClicked}   
-              checkNum={checkNum}
-              setCheckNum={setCheckNum}
-              setCurrButtons={setCurrButtons}
-              setSplitCheckOpen={setSplitCheckOpen}
-          />
-        </div>
-        <div className={styles.checkEdit}>
-          <CheckEdit 
-              check={check}    
-              setCheck={setCheck}
-              checkItemClicked={checkItemClicked}
-              setCheckItemClicked={setCheckItemClicked}
-              currButtons={currButtons}
-              setCurrButtons={setCurrButtons}
-              multiCheck={multiCheck}
-              setMultiCheck={setMultiCheck}
-              checkNum={checkNum}
-              setCheckNum={setCheckNum}
-          />
-        </div>
+      <div className={styles.checkView}>
+        <CheckView
+          setCurrButtons={setCurrButtons}
+          setSplitCheckOpen={setSplitCheckOpen}
+          setCheckWasSplit={setCheckWasSplit}
+        />
+      </div>
+      <div className={styles.checkEdit}>
+        <CheckEdit
+          setCheckWasSplit={setCheckWasSplit}
+          checkWasSplit={checkWasSplit}
+          currButtons={currButtons}
+          setCurrButtons={setCurrButtons}
+        />
+      </div>
     </div>
-  )  
-    
+  );
+
   let addCheck = null;
-  
-  if(multiCheck.length === 6){
-    addCheck = null
-  }else if(splitCheckOpen && multiCheck.length%2!==0){
-    addCheck=(
+
+  if (checkCtx.multiCheck.length === 6) {
+    addCheck = null;
+  } else if (splitCheckOpen && checkCtx.multiCheck.length % 2 !== 0) {
+    addCheck = (
       <div className={styles.splitCheck} onClick={addSplitCheckHandler}>
-            <p>Add Check</p>
-        </div>
-    )
-  }else if(multiCheck.length %2===0){
-    addCheck=(
+        <p>Add Check</p>
+      </div>
+    );
+  } else if (checkCtx.multiCheck.length % 2 === 0) {
+    addCheck = (
       <>
         <div className={styles.splitCheck} onClick={addSplitCheckHandler}>
           <p>Add Check</p>
@@ -122,13 +120,12 @@ const POS = () => {
         <div className={styles.splitCheck} onClick={addSplitCheckHandler}>
           <p>Add Check</p>
         </div>
-      </> 
-    )
+      </>
+    );
   }
 
-
-  if(splitCheckOpen){
-    PosView=(
+  if (splitCheckOpen) {
+    PosView = (
       <>
         <div className={styles.splitHeader}>
           <div className={styles.splitBackBtn} onClick={splitBackHandler}>
@@ -136,40 +133,78 @@ const POS = () => {
           </div>
         </div>
         <div className={styles.splitCheckView}>
-              
-         {multiCheck.map((currCheck) => {
-           if(currCheck[0].title === '-' && multiCheck.indexOf(currCheck) !== 0){
-              deleteEmptyCheckBtn = <div onClick={()=>deleteEmptyCheckHandler(multiCheck.indexOf(currCheck))}> Delete </div>
-           }
-           return (
-            <div className={styles.splitCheck}>
-              {deleteEmptyCheckBtn}
-              {currCheck.map((checkItm)=>{
-                if(checkItemClicked && checkItemClicked.id === checkItm.id){
-                  splitItmStyle = styles.splitItmClicked
-                }else{
-                  splitItmStyle = null;
+          {checkCtx.multiCheck.map((currCheck) => {
+            if (
+              currCheck[0].title === "-" &&
+              checkCtx.multiCheck.indexOf(currCheck) !== 0
+            ) {
+              deleteEmptyCheckBtn = (
+                <div
+                  onClick={() =>
+                    deleteEmptyCheckHandler(
+                      checkCtx.multiCheck.indexOf(currCheck)
+                    )
+                  }
+                >
+                  {" "}
+                  Delete{" "}
+                </div>
+              );
+            }
+            return (
+              <div
+                className={styles.splitCheck}
+                onClick={
+                  checkCtx.checkItemClicked
+                    ? () =>
+                        splitCheckItemHandler(
+                          null,
+                          checkCtx.multiCheck.indexOf(currCheck)
+                        )
+                    : null
                 }
-                return <p className={splitItmStyle} onClick={()=>splitCheckItemHandler(checkItm, multiCheck.indexOf(currCheck))}>
-                 {checkItm.title}
-                </p>
-              })}
-            </div>)
-       })}
+              >
+                {deleteEmptyCheckBtn}
+                {currCheck.map((checkItm) => {
+                  if (
+                    checkCtx.checkItemClicked &&
+                    (!!checkCtx.checkItemClicked._id
+                      ? checkCtx.checkItemClicked._id === checkItm._id
+                      : checkCtx.checkItemClicked.fid === checkItm.fid)
+                  ) {
+                    splitItmStyle = styles.splitItmClicked;
+                  } else {
+                    splitItmStyle = null;
+                  }
 
-       {addCheck}
-     </div>
-     </>
-   )
+                  return (
+                    <p
+                      className={splitItmStyle}
+                      onClick={
+                        checkCtx.checkItemClicked
+                          ? null
+                          : () =>
+                              splitCheckItemHandler(
+                                checkItm,
+                                checkCtx.multiCheck.indexOf(currCheck)
+                              )
+                      }
+                    >
+                      {checkItm.title}
+                    </p>
+                  );
+                })}
+              </div>
+            );
+          })}
+
+          {addCheck}
+        </div>
+      </>
+    );
   }
-    
 
-
-  return (
-    <div>
-        {PosView}
-    </div>
-  )
-}
+  return <div>{PosView}</div>;
+};
 
 export default POS;

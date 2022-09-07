@@ -1,12 +1,21 @@
 .currentButton{
-    border: 1px solid black;
-    border-radius: 5px;
+    background-color: #b19ae0;
+    cursor: pointer;
+    /* border: 2px solid transparent; */
+    border-radius: 10px;
     padding: 20px 30px;
+    margin: 5px;
+}
+
+.currentButton:hover{
+    /* border: 2px solid black; */
+    background-color: #beade0;
+
 }
 
 .currentButtonSelected{
-    border: 1px solid black;
-    border-radius: 5px;
+    border: 2px solid rgba(71, 70, 70, 0.481);
+    border-radius: 10px;
     padding: 20px 30px;
     background-color: lightpink;
     color:black;
