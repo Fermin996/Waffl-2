@@ -60,6 +60,7 @@ const Table = ({ tableNum }) => {
       {tableNum}
     </div>
   );
+  
   let activeTable = (
     <div
       onClick={handleActiveTableClicked}

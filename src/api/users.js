@@ -1,7 +1,7 @@
 
 const clockIn = async(pin)=>{
     try{
-        const response = await fetch("http://localhost:5000/user/clockIn", {
+        const response = await fetch(process.env.REACT_APP_BACKEND_URL+"/user/clockIn", {
             method: "POST",
             headers:{
                 Accept: "application/json",

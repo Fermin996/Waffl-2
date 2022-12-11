@@ -4,6 +4,7 @@ import CheckItem from '../CheckItem/CheckItem'
 import { useNavigate } from 'react-router-dom'
 import { CheckContext } from '../../../../helpers/check-context'
 import { TablesContext } from '../../../../helpers/tables-context'
+import { updateCheckStatus } from '../../../../api/checks'
 
 
 const PaymentScreen = () => {
@@ -19,32 +20,50 @@ const PaymentScreen = () => {
     let tax
     
     checkCtx.check.forEach(element => {
-        console.log(element.price)
-        console.log(element.quantity)
         subTotal+= element.price*element.quantity
     });
-
-    console.log(subTotal)
     
     tax = subTotal*0.07
+
+    const callUpdateCheckStatus=async(status)=>{
+        await updateCheckStatus(checkCtx.checkId, tablesCtx.currentTable._id, status)
+    }
     
     useEffect(()=>{
         setBalance(subTotal+tax)
-        setTenderedAmount(subTotal+tax  )
+        setTenderedAmount(subTotal+tax)
     },[])
 
+
     useEffect(()=>{
-        console.log(balance)
-        if(balance===0){
+
+        if(balance === 0 && checkCtx.multiCheck){
             let tablesCopy = tablesCtx.tables
-            checkCtx.setPaidChecks([...checkCtx.paidChecks, tablesCtx.foundTable])
+            let multiCheckCopy = checkCtx.multiCheck
+
+            callUpdateCheckStatus("paid")
+
+            tablesCtx.setTables([...tablesCopy])
+            
+            tablesCopy[tablesCopy.indexOf(tablesCtx.currentTable)].checks.splice(checkCtx.checkIndex, 1)
+            multiCheckCopy.splice(checkCtx.checkIndex, 1)
+
+            console.log(multiCheckCopy)
+            tablesCtx.setTables([...tablesCopy])
+            checkCtx.setMultiCheck([...multiCheckCopy])
+
+            navigate('/pos-view')
+        }else if(balance===0){
+            callUpdateCheckStatus("paid")
+            let tablesCopy = tablesCtx.tables
             tablesCopy.splice(tablesCopy.indexOf(tablesCtx.foundTable), 1)
             console.log(tablesCopy)
             tablesCtx.setTables([...tablesCopy])
-            tablesCtx.setTable(null)
+            tablesCtx.setTableNum(null)
             checkCtx.setCheck([{title:"-", quantity:0, price:0, total:0, sent:false}])
             navigate('/')
         }
+
     },[balance])
 
     const tenderedHandler=(e)=>{

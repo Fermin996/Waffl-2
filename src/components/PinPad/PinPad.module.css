@@ -1,12 +1,18 @@
 .pinBack{
     /* background-color: rgb(251, 190, 50); */
-    background-color: #beade0;
+    /* background-color: #beade0; */
+    background-color: blue;
     height:90vh;
     width:100vw;
     /* margin-top:-20px; */
     padding-top:10vh;
     overflow-y: hidden;
 }
+
+/* .userPins{
+    height: 20px;
+    margin-top: - 20px;
+} */
 
 .pinNumDisplayDiv{
     margin-bottom:20px;
@@ -53,6 +59,7 @@
 
 .goP{
     padding-top:20px;
+    
 }
 
 .pinRow section:hover{

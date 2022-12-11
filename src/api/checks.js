@@ -1,6 +1,6 @@
 const createCheck = async (user, startTime, shiftId, tableId, checkItems) => {
   try {
-    const response = await fetch("http://localhost:5000/check/create", {
+    const response = await fetch(process.env.REACT_APP_BACKEND_URL+"/check/create", {
       method: "POST",
       headers: {
         Accept: "application/json",
@@ -16,7 +16,7 @@ const createCheck = async (user, startTime, shiftId, tableId, checkItems) => {
 
 const getCheckById = async (checkId) => {
   try {
-    const response = await fetch("http://localhost:5000/check/" + checkId, {
+    const response = await fetch(process.env.REACT_APP_BACKEND_URL+"/check/" + checkId, {
       method: "GET",
     });
 
@@ -29,7 +29,7 @@ const getCheckById = async (checkId) => {
 const getChecksByTable = async (tableId) => {
   try {
     const response = await fetch(
-      "http://localhost:5000/check/table/" + tableId,
+      process.env.REACT_APP_BACKEND_URL+"/check/table/" + tableId,
       {
         method: "GET",
       }
@@ -44,7 +44,7 @@ const getChecksByTable = async (tableId) => {
 const updateCheck = async (checkItems, checkId) => {
   try {
     const response = await fetch(
-      "http://localhost:5000/check/update/" + checkId,
+      process.env.REACT_APP_BACKEND_URL+"/check/update/" + checkId,
       {
         method: "PATCH",
         headers: {
@@ -61,9 +61,29 @@ const updateCheck = async (checkItems, checkId) => {
   }
 };
 
+const updateCheckStatus=async(checkId, tableId, status)=>{
+  try {
+    const response = await fetch(
+      process.env.REACT_APP_BACKEND_URL+"/check/update-status/" + checkId,
+      {
+        method: "PATCH",
+        headers: {
+          Accept: "application/json",
+          "Content-type": "application/json",
+        },
+        body: JSON.stringify({ tableId, status }),
+      }
+    );
+
+    return response.json();
+  } catch (err) {
+    console.log(err);
+  }
+}
+
 const deleteCheck = async (checkId, tableId) => {
   try {
-    const response = await fetch("http://localhost:5000/check/" + checkId, {
+    const response = await fetch(process.env.REACT_APP_BACKEND_URL+"/check/" + checkId, {
       method: "DELETE",
     });
 
@@ -76,6 +96,7 @@ const deleteCheck = async (checkId, tableId) => {
 export {
   createCheck,
   updateCheck,
+  updateCheckStatus,
   deleteCheck,
   getCheckById,
   getChecksByTable,

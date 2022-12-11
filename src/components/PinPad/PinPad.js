@@ -43,7 +43,10 @@ const PinPad = ({ clockedEmployees, setClockedEmployees }) => {
 
   return (
     <div className={styles.pinBack}>
-
+      <div className={styles.userPins}>
+        <p>user 1: 1234</p>
+        <p>user 2: 2345</p>
+      </div>
       <h3>Enter Pin</h3>
       <div className={styles.pinNumDisplayDiv}>{currentNum}</div>
 

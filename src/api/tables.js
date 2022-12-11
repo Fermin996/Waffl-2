@@ -1,6 +1,6 @@
 const createTable = async(user, table, startTime, shiftId, number)=>{
     try{
-        const response = await fetch("http://localhost:5000/table/create",{
+        const response = await fetch(process.env.REACT_APP_BACKEND_URL+"/table/create",{
             method:"POST",
             headers: {
                 Accept: "application/json",
@@ -16,7 +16,7 @@ const createTable = async(user, table, startTime, shiftId, number)=>{
 
 const getOpenTables = async()=>{
     try{
-        const response = await fetch("http://localhost:5000/table/open", {
+        const response = await fetch(process.env.REACT_APP_BACKEND_URL+"/table/open", {
             method: "GET"
         })
         return response.json()
@@ -27,7 +27,7 @@ const getOpenTables = async()=>{
 
 const getTable = async(tableId)=>{
     try{
-        const response = await fetch('http://localhost:5000/table/current-table/'+tableId, {
+        const response = await fetch(process.env.REACT_APP_BACKEND_URL+'/table/current-table/'+tableId, {
             method: "GET"
         })
 
@@ -39,7 +39,7 @@ const getTable = async(tableId)=>{
 
 const compareAndUpdateMulti = async(tableId, multiCheck, user, tableNum)=>{
     try{
-        const response = await fetch("http://localhost:5000/table/update-checks/"+tableId, {
+        const response = await fetch(process.env.REACT_APP_BACKEND_URL+"/table/update-checks/"+tableId, {
             method: "PATCH",
             headers:{
                 Accept: "application/json",
@@ -57,7 +57,7 @@ const compareAndUpdateMulti = async(tableId, multiCheck, user, tableNum)=>{
 
 const deleteTable = async(tableId)=>{
     try{
-        const response = await fetch("http://localhost:5000/table/"+tableId, {
+        const response = await fetch(process.env.REACT_APP_BACKEND_URL+"/table/"+tableId, {
             method: "DELETE"
         })
 

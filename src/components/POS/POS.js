@@ -18,7 +18,8 @@ const POS = () => {
   let deleteEmptyCheckBtn = null;
   let splitItmStyle = null;
   let multiCheckCopy = checkCtx.multiCheck;
-
+console.log(checkCtx.check)
+console.log(checkCtx.multiCheck)
   function addSplitCheckHandler() {
     if (checkCtx.multiCheck.length < 6) {
       multiCheckCopy.push([
@@ -107,18 +108,18 @@ const POS = () => {
     addCheck = null;
   } else if (splitCheckOpen && checkCtx.multiCheck.length % 2 !== 0) {
     addCheck = (
-      <div className={styles.splitCheck} onClick={addSplitCheckHandler}>
-        <p>Add Check</p>
+      <div className={styles.splitCheckAdd} onClick={addSplitCheckHandler}>
+        <p>+ Add Check</p>
       </div>
     );
   } else if (checkCtx.multiCheck.length % 2 === 0) {
     addCheck = (
       <>
-        <div className={styles.splitCheck} onClick={addSplitCheckHandler}>
-          <p>Add Check</p>
+        <div className={styles.splitCheckAdd} onClick={addSplitCheckHandler}>
+          <p>+ Add Check</p>
         </div>
-        <div className={styles.splitCheck} onClick={addSplitCheckHandler}>
-          <p>Add Check</p>
+        <div className={styles.splitCheckAdd} onClick={addSplitCheckHandler}>
+          <p>+ Add Check</p>
         </div>
       </>
     );
@@ -127,7 +128,7 @@ const POS = () => {
   if (splitCheckOpen) {
     PosView = (
       <>
-        <div className={styles.splitHeader}>
+        <div className={styles.splitCheckViewHeader}>
           <div className={styles.splitBackBtn} onClick={splitBackHandler}>
             Back
           </div>
@@ -146,8 +147,7 @@ const POS = () => {
                     )
                   }
                 >
-                  {" "}
-                  Delete{" "}
+                  Delete
                 </div>
               );
             }
@@ -163,7 +163,10 @@ const POS = () => {
                         )
                     : null
                 }
-              >
+              > 
+                <div className={styles.splitCheckHeader}>
+                  Table {tablesCtx.tableNum}, check #{checkCtx.multiCheck.indexOf(currCheck)+1}
+                </div>
                 {deleteEmptyCheckBtn}
                 {currCheck.map((checkItm) => {
                   if (
@@ -174,7 +177,7 @@ const POS = () => {
                   ) {
                     splitItmStyle = styles.splitItmClicked;
                   } else {
-                    splitItmStyle = null;
+                    splitItmStyle = styles.splitItmNotClicked;
                   }
 
                   return (

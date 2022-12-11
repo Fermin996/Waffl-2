@@ -9,19 +9,56 @@
     display:flex;
     flex-direction: row;
     flex-wrap: wrap;
-    height: 100vh;
+    height: 100%;
     width: 100vw;
     justify-content: center;
+    background-color: #7B8FC0;
+    padding-bottom: 10px;
+    padding-top:10px;
+}
+
+.splitCheckViewHeader{
+    position: sticky;
+    top:0;
+    z-index:1000;
+    background-color: black;
+    margin-top:-5px;
+    height: 5vh;
+    color: white;
 }
 
 .splitCheck{
-    border: 1px solid black;
     width: 40%;
-    background-color: lightgray;
+    margin:3px;
+    height: 45vh;
+    background-color: rgb(239, 237, 237);
+    border-radius: 3px;
+    overflow: auto;
 }
 
-.splitHeader{
-   
+.splitCheckAdd{
+    cursor: pointer;
+    width: 40%;
+    margin:3px;
+    height: 45vh;
+    background-color: rgba(239, 237, 237, 0.604);
+    border-radius: 3px;
+    border: 2px dashed white;
+}
+
+.splitCheckAdd p{
+    font-size: 25px;
+    color: white;
+    margin-top:30%;
+}
+
+.splitCheckHeader{
+   position: sticky;
+   top:0;
+   z-index:999;
+   background-color: lightgray;
+   padding:10px;
+   /* border-bottom:1px solid black; */
 }
 
 .splitBackBtn{
@@ -33,7 +70,19 @@
 }
 
 .splitItmClicked{
+    cursor: pointer;
+    border-bottom: 2px solid rgba(187, 186, 186, 0.754);
     background-color: aqua;
+    padding:10px;
+    margin:0px;
+
+}
+
+.splitItmNotClicked{
+    cursor: pointer;
+    border-bottom: 2px solid rgba(187, 186, 186, 0.754);
+    padding:10px;
+    margin:0px;
 }
 
 
